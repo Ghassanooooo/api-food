@@ -1,0 +1,11 @@
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+@import 'partials/fixed-footer.scss';
+
+main {
+  min-height: 100vh;
+  // background-color: #7ec0ee;
+}
+
+.button-container {
+  width: 80vw;
+}
