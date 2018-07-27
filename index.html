@@ -7,14 +7,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>food</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
   <link rel="stylesheet" href="/styles/main.css">
 </head>
 
 <body>
-  <main class="container d-flex">
-   
+  <main class="container">
+    <nav class="navbar navbar-light">
+      <form class="form-inline" style="margin: auto">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" style="width: 800px ;height: 46px;">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" data-toggle="modal" data-target="#exampleModalCenter"><i class="fas fa-search fa-2x"></i></button>
+      </form>
+    </nav>
     <div id="response">
+       <!-- Button trigger modal -->
+    
       
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Your delicious recipe</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     
 

@@ -4,3 +4,10 @@
 
 * To install dependencies run `npm install`.
 * To run this program simply type `npm start` into the console.
+
+
+
+
+
+                   
+ 

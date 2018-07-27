@@ -27,28 +27,63 @@
 
 
     }
-    $('#myModal').modal('toggle')
 
-    let output = document.querySelector('#response')
+    $('#myModal').modal();
 
+    let output = document.querySelector('.modal-body');
+    let button = document.querySelector('.form-inline');
+    let input = document.querySelector('input');
 
-    const food = new Api()
-    food.getQuary('Cajun Chicken Pasta').then(data => {
-        data.recipes.map((res) => {
-            return output.innerHTML += `
+    output.innerHTML = '<div class="loader">Loading...</div>';
 
-                        <div class="card" style="width: 18rem;margin-bottom:25px">
-                        <img class="card-img-top" src="${res.image_url}" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">${res.title}</h5>
-                            <p class="card-text"> ${res.publisher}</p>
-                            <a href="${res.source_url}" class="btn btn-primary" target="_blank">Go source</a>
-                        </div>
-                        </div>
-                         `
+    const food = new Api();
+    button.addEventListener('submit', (e) => {
+        e.preventDefault();
+        food.getQuary(input.value).then(data => {
+
+            return data.recipes;
         })
+            .then(recipeId => {
 
+                let randomIndex = Math.floor(Math.random() * recipeId.length - 1);
+
+                return food.getId(recipeId[randomIndex].recipe_id);
+            })
+            .then(res => { if (res.recipe) return res.recipe })
+            .then(recipe => {
+                let id = recipe.recipe_id;
+                let url = recipe.image_url;
+                let source = recipe.source_url;
+                let title = recipe.title;
+                let ingredients = recipe.ingredients.map(ingredient => `<li class="list-group-item">${ingredient}</li>`).join('');
+                console.log(recipe.recipe_id);
+
+               
+                return output.innerHTML = `
+
+                        <div class="card" style="width: 100%;">
+                         <img class="card-img-top" src="${url}" alt="Card image cap">
+                        <div class="card-body">
+                        <h5 class="card-title" style="text-align:center">${title}</h5>
+
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                ${ingredients}
+                            </ul>
+                            <div class="card-body">
+                                <a href="${source}" class="card-link" target="_blank">Source link</a>
+                                
+                                </div>
+
+                            </div>
+                    
+                    `;
+
+
+
+            });
     });
+
 
     //
 })();
